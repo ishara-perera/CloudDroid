@@ -1739,6 +1739,401 @@ footer > span:first-child {
     display: none;
   }
 }
+
+/* Prominent Top Header Install Button */
+.header-install-btn {
+  min-height: 34px;
+  padding: 6px 13px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 8px;
+  gap: 6px;
+  background: linear-gradient(135deg, #275340 0%, #1b382c 100%);
+  border: 1px solid #44896a;
+  color: #98f0c8;
+  box-shadow: 0 2px 12px rgba(72, 187, 136, 0.16);
+}
+.header-install-btn:hover {
+  background: linear-gradient(135deg, #316850 0%, #234738 100%);
+  border-color: #65b892;
+  color: #bcffdf;
+}
+.header-install-btn.installed {
+  background: #1f332b;
+  border-color: #365c4b;
+  color: #7cd6ab;
+}
+
+/* Dedicated Dashboard Android Install Banner */
+.android-install-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(105deg, #211c33 0%, #172624 100%);
+  border: 1px solid #473b68;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+.android-banner-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: #2b2342;
+  border: 1px solid #5d4b8a;
+  color: #b89ffa;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.android-banner-copy {
+  flex: 1;
+  min-width: 0;
+}
+.android-banner-title-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 4px;
+}
+.android-banner-title-row strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ede8f6;
+}
+.android-banner-copy p {
+  font-size: 11px;
+  color: #9e94b0;
+  margin: 0;
+  line-height: 1.5;
+}
+.android-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+.install-cta-btn {
+  background: #6dcea6;
+  border-color: #8ae0bc;
+  color: #0e241b;
+  font-weight: 650;
+  font-size: 12px;
+  min-height: 38px;
+  padding: 8px 15px;
+}
+.install-cta-btn:hover {
+  background: #84dfb9;
+  border-color: #a6f0d0;
+}
+.apk-secondary-btn {
+  background: #241e33;
+  border-color: #4f406e;
+  color: #cbbaf5;
+  font-size: 11px;
+  min-height: 38px;
+  padding: 8px 13px;
+}
+.apk-secondary-btn:hover {
+  background: #312746;
+  border-color: #705b9c;
+}
+
+/* Install Hub Modal */
+.install-hub-modal {
+  width: 530px;
+}
+.install-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.install-modal-badge {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #a38aff22;
+  border: 1px solid #67529e;
+  color: #c2affc;
+  flex-shrink: 0;
+}
+.install-modal-title h2 {
+  margin: 0;
+  font-size: 16px;
+}
+.install-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: #13101a;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #2e283b;
+  margin-bottom: 16px;
+}
+.install-tabs button {
+  min-height: 36px;
+  font-size: 11px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #9a90ab;
+  border-radius: 7px;
+}
+.install-tabs button.active {
+  background: #272038;
+  border-color: #5b4982;
+  color: #e4dbf7;
+  font-weight: 600;
+}
+.install-tab-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.native-prompt-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #193529;
+  border: 1px solid #386d54;
+}
+.native-prompt-banner strong {
+  font-size: 12px;
+  color: #9ef0cc;
+  display: block;
+}
+.native-prompt-banner p {
+  font-size: 10px;
+  color: #7cc4a4;
+  margin: 2px 0 0;
+}
+.qr-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0 4px;
+}
+.qr-card {
+  padding: 12px;
+  background: #f0ebf8;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  margin-bottom: 12px;
+}
+.qr-card canvas {
+  display: block;
+  border-radius: 8px;
+}
+.qr-caption {
+  font-size: 11px;
+  color: #a29aad;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.url-copy-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #120f18;
+  border: 1px solid #383040;
+  border-radius: 8px;
+  padding: 6px 8px 6px 12px;
+}
+.url-text,
+.url-input-field {
+  font-size: 11px;
+  color: #ded8e8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  font-family: monospace;
+  background: transparent;
+  border: 0;
+  padding: 2px 0;
+}
+.url-copy-box button {
+  min-height: 32px;
+  padding: 4px 11px;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.apk-package-card {
+  background: #15121e;
+  border: 1px solid #382e4c;
+  border-radius: 11px;
+  padding: 16px;
+}
+.apk-package-top {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 10px;
+}
+.apk-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: #28203b;
+  border: 1px solid #56447d;
+  color: #bfa9f9;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.apk-package-top strong {
+  display: block;
+  font-size: 13px;
+  color: #ece6f8;
+}
+.apk-package-top span {
+  font-size: 10px;
+  color: #968aa8;
+}
+.apk-package-card p {
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+.apk-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 10px;
+  color: #8fdab8;
+  margin-bottom: 14px;
+}
+.apk-specs span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.install-steps-box {
+  background: #16131f;
+  border-radius: 10px;
+  border: 1px solid #2d2639;
+  padding: 14px 16px;
+}
+.install-steps-box > strong {
+  font-size: 10px;
+  color: #cbbce2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+.install-steps-box.warning-troubleshoot {
+  border-color: #5c492d;
+  background: #1e1814;
+}
+.install-steps-box.warning-troubleshoot > strong {
+  color: #f0ca86;
+}
+.install-steps-box ol {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 11px;
+  line-height: 1.75;
+  color: #9f93af;
+}
+.install-steps-box ol strong {
+  color: #e2d8f3;
+}
+.install-modal-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.install-modal-footer button {
+  min-height: 36px;
+  font-size: 11px;
+}
+
+/* Android Mobile Bottom Navigation Bar */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .android-install-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+  .android-banner-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .install-tabs {
+    grid-template-columns: 1fr;
+  }
+  .content {
+    padding-bottom: 92px;
+  }
+  .mobile-bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
+    padding: 4px 6px calc(4px + env(safe-area-inset-bottom, 0px));
+    background: rgba(21, 17, 29, 0.94);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid #312942;
+    z-index: 45;
+  }
+  .mobile-tab-item {
+    border: 0;
+    background: transparent;
+    border-radius: 10px;
+    min-height: 48px;
+    padding: 4px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: #9489a6;
+  }
+  .mobile-tab-item:hover {
+    background: transparent;
+    color: #d7cbf0;
+  }
+  .mobile-tab-pill {
+    width: 44px;
+    height: 26px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    transition: background 0.15s;
+  }
+  .mobile-tab-item.active {
+    color: #e7def9;
+  }
+  .mobile-tab-item.active .mobile-tab-pill {
+    background: #6f52a84d;
+    color: #c7b1fc;
+  }
+  .mobile-tab-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: -0.1px;
+    line-height: 1.1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;

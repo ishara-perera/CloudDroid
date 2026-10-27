@@ -1,5 +1,10 @@
 {
   "name": "CloudDroid",
   "description": "Private Android workspace control plane for managing isolated Android profiles, network egress routes, diagnostics, and inbound telephony.",
-  "requestFramePermissions": ["microphone"]
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

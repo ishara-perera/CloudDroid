@@ -4,7 +4,9 @@ import {
   ArrowUpRight,
   ChevronRight,
   Cloud,
+  Code2,
   Cpu,
+  Download,
   Globe2,
   Info,
   LayoutDashboard,
@@ -39,6 +41,9 @@ import { PhoneCenter } from "./components/PhoneCenter";
 import { NetworkView } from "./components/NetworkView";
 import { SettingsView } from "./components/SettingsView";
 import { ProfileModal } from "./components/ProfileModal";
+import { PWAInstallButton } from "./components/PWAInstallButton";
+import { PhoneDeployModal } from "./components/PhoneDeployModal";
+import { usePWAInstall } from "./hooks/usePWAInstall";
 
 const nav: [Page, typeof Cloud][] = [
   ["Dashboard", LayoutDashboard],
@@ -47,6 +52,14 @@ const nav: [Page, typeof Cloud][] = [
   ["Network", Globe2],
   ["Phone center", Phone],
   ["Settings", Settings],
+];
+
+const mobileBottomTabs: [Page, string, typeof Cloud][] = [
+  ["Dashboard", "Home", LayoutDashboard],
+  ["Profiles", "Profiles", Users],
+  ["Android viewer", "Viewer", MonitorSmartphone],
+  ["Network", "Network", Globe2],
+  ["Phone center", "Phone", Phone],
 ];
 
 export function App() {
@@ -60,9 +73,21 @@ export function App() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [modal, setModal] = useState<"create" | "edit" | null>(null);
+  const [phoneModal, setPhoneModal] = useState(false);
+  const [installTab, setInstallTab] = useState<"pwa" | "apk">("pwa");
   const [mobileNav, setMobileNav] = useState(false);
   const [mode, setMode] = useState<NetworkMode>("direct");
   const [proxyUrl, setProxyUrl] = useState("");
+  const { isInstallable, isInstalled, install } = usePWAInstall();
+
+  const handleInstallClick = async (tab: "pwa" | "apk" = "pwa") => {
+    setInstallTab(tab);
+    if (tab === "pwa" && isInstallable) {
+      const accepted = await install();
+      if (accepted) return;
+    }
+    setPhoneModal(true);
+  };
 
   const profile = profiles.find((p) => p.id === selected);
 
@@ -295,6 +320,11 @@ export function App() {
             <strong>{page}</strong>
           </div>
           <div className="topbar-right">
+            <PWAInstallButton
+              isInstallable={isInstallable}
+              isInstalled={isInstalled}
+              onInstallClick={() => void handleInstallClick("pwa")}
+            />
             <span className="private-pill">
               <LockKeyhole size={13} /> Private
             </span>
@@ -306,7 +336,13 @@ export function App() {
             >
               <RefreshCw size={17} className={busy ? "spin" : ""} />
             </button>
-            <span className="small-avatar">A</span>
+            <button
+              className="small-avatar"
+              title="Workspace settings"
+              onClick={() => go("Settings")}
+            >
+              A
+            </button>
           </div>
         </header>
         <main className="content">
@@ -380,6 +416,41 @@ export function App() {
           )}
           {page === "Dashboard" && (
             <>
+              <div className="android-install-banner">
+                <div className="android-banner-icon">
+                  <Smartphone size={22} />
+                </div>
+                <div className="android-banner-copy">
+                  <div className="android-banner-title-row">
+                    <strong>Install CloudDroid on Android</strong>
+                    <span className="badge good">
+                      <i />
+                      {isInstalled ? "Installed" : "Ready"}
+                    </span>
+                  </div>
+                  <p>
+                    Install directly to your Android home screen &amp; app
+                    drawer as a standalone WebAPK, or download the native
+                    Android Studio APK project.
+                  </p>
+                </div>
+                <div className="android-banner-actions">
+                  <button
+                    className="install-cta-btn"
+                    onClick={() => void handleInstallClick("pwa")}
+                  >
+                    <Download size={15} />
+                    Install
+                  </button>
+                  <button
+                    className="apk-secondary-btn"
+                    onClick={() => void handleInstallClick("apk")}
+                  >
+                    <Code2 size={15} />
+                    APK Project (.zip)
+                  </button>
+                </div>
+              </div>
               <div className="stats">
                 <div className="stat">
                   <span className="stat-icon purple">
@@ -596,6 +667,23 @@ export function App() {
           </footer>
         </main>
       </div>
+      <nav className="mobile-bottom-nav" aria-label="Android bottom navigation">
+        {mobileBottomTabs.map(([targetPage, shortLabel, Icon]) => {
+          const isActive = page === targetPage;
+          return (
+            <button
+              key={targetPage}
+              className={"mobile-tab-item " + (isActive ? "active" : "")}
+              onClick={() => go(targetPage)}
+            >
+              <span className="mobile-tab-pill">
+                <Icon size={19} />
+              </span>
+              <span className="mobile-tab-label">{shortLabel}</span>
+            </button>
+          );
+        })}
+      </nav>
       {modal && (
         <ProfileModal
           modal={modal}
@@ -609,6 +697,14 @@ export function App() {
           run={run}
         />
       )}
+      <PhoneDeployModal
+        isOpen={phoneModal}
+        onClose={() => setPhoneModal(false)}
+        isInstallable={isInstallable}
+        isInstalled={isInstalled}
+        onNativeInstall={install}
+        initialTab={installTab}
+      />
     </div>
   );
 }
