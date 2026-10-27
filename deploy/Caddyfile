@@ -1,8 +1,0 @@
-{$DOMAIN} {
-    encode zstd gzip
-    request_body {
-        max_size 200KB
-    }
-    reverse_proxy 127.0.0.1:8000
-    # No access log: telephone payloads, tokens and URLs must stay out of logs.
-}

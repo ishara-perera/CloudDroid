@@ -1,0 +1,5 @@
+{
+  "name": "CloudDroid",
+  "description": "Private Android workspace control plane for managing isolated Android profiles, network egress routes, diagnostics, and inbound telephony.",
+  "requestFramePermissions": ["microphone"]
+}
